@@ -1,0 +1,99 @@
+\mode<presentation>
+
+\defbeamertemplate*{title page}{magnolia}[1][]
+{ 
+    \begin{tikzpicture}[remember picture, overlay, anchor=west]
+        \begin{scope}[shift={(-1,-5.2)}]
+            \node (rect) [rectangle, fill overzoom image=magnolia2.jpg, minimum width=14cm, minimum height=5cm, anchor= south west] at (1,1) {};
+
+            \node[text width=8cm, outer sep=-5pt, inner sep=10pt, anchor=north west] (title) at (1,7.5) {\usebeamerfont{title}\inserttitle};
+            \node[text width=5cm, anchor=north west] (author) at (10,7.5) {\insertauthor\\
+            \insertinstitute\\
+            \insertdate};
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\newcommand{\about}[2]{
+    \begin{frame}
+        \begin{tikzpicture}[remember picture, overlay, anchor=west]
+            \begin{scope}[shift={(-1,-5.2)}]
+                % Solid colours and picture
+                \fill[PowderPink, opacity=0.7] (1,1) rectangle (12,7);
+                \fill[fill overzoom image=magnolia3.jpg] (4,3) rectangle (15,8);
+
+                % Texts
+                \node[fill=white, 
+                    anchor=north west,
+                    inner sep=10pt
+                    ] at (2,6) {\usebeamerfont{frametitle}#1};
+                \node[
+                    anchor=north west,
+                    inner sep=1pt,
+                    text width=11cm
+                    ] at (4,2.75) {\usebeamerfont{normal text}\justifying#2};
+            \end{scope}
+        \end{tikzpicture}
+    \end{frame}
+}
+
+\newcommand{\normal}[2]{
+    \begin{frame}
+        \begin{tikzpicture}[remember picture, overlay, anchor=west]
+            \begin{scope}[shift={(-1,-5.2)}]
+                \node (title) at (2,6) {\usebeamerfont{frametitle}#1};
+                \node[anchor=north west, text width=12cm, align=center, outer sep=5pt] (text) at (title.south west) {\usebeamerfont{normal text}\justifying#2};
+            \end{scope}
+        \end{tikzpicture}
+    \end{frame}
+}
+
+\newcommand{\num}[3]{
+    \begin{frame}
+        \begin{tikzpicture}[remember picture, overlay, anchor=west]
+            \begin{scope}[shift={(-1,-5.2)}]
+                % Solid colours and picture
+                \fill[PowderPink] (2,2) rectangle (4,7);
+                \fill[PowderPink] (5,5) rectangle (14,7);
+                \fill[PowderPink, opacity=0.8] (5,5) rectangle (14,7);
+                \node[
+                    anchor=north west,
+                    inner sep=1pt,
+                    text width=8.8cm
+                    ] at (5.1,4) {\usebeamerfont{normal text}\justifying#3};
+                \node[
+                    inner sep=1pt,
+                    text width=9cm,
+                    white,
+                    font=\sffamily\bfseries\Huge
+                    ] at (2.5,6) {\usebeamerfont{title}#2};
+                \node[
+                    anchor= west,
+                    inner sep=5pt,
+                    text width=9cm,
+                    white,
+                    font=\sffamily\bfseries\Huge
+                    ] at (5,6) {\usebeamerfont{frametitle}#1};
+            \end{scope}
+        \end{tikzpicture}
+    \end{frame}
+}
+
+\newcommand{\pic}[2]{
+    \begin{frame}
+        \begin{tikzpicture}[remember picture, overlay, anchor=west]
+            \begin{scope}[shift={(-1,-5.2)}]
+                % Solid colours and picture
+                \fill[fill overzoom image=magnolia1.jpg] (1,1) rectangle (15,8);
+                %\fill[white] () (2,2) rectangle (6,7) ;
+
+                \node (rect) [rectangle, fill=white, minimum width=4cm, minimum height=5cm, anchor= south west] at (2,2) {};
+                \node[anchor=north, text width=3.5cm, align=center, outer sep=5pt] (title) at (rect.north) {\usebeamerfont{frametitle}\justifying#1};
+                \node[anchor=north, text width=3.5cm, outer sep=5pt] at (title.south) {\usebeamerfont{normal text}\justifying#2};
+
+            \end{scope}
+        \end{tikzpicture}
+    \end{frame}
+}
+
+\mode<all>
